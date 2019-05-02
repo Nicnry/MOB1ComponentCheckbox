@@ -1,14 +1,21 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Titre de l'app
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-item>Checklists</ion-item>
+  <ion-list *ngFor="let flower of data.flowers">
+    <ion-item>
+      <ion-label>{{flower.name}}</ion-label>
+      <!-- We can decide if we bind by [param]="var.val" or param="{{var.val}}", see the example below -->
+      <ion-checkbox [color]="flower.color" checked="{{flower.checked}}" disabled="{{flower.quantity == 0 ? true : false}}"></ion-checkbox>
+
+    <ion-toggle *ngIf="flower.checked" color="primary"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
